@@ -1,0 +1,18 @@
+p {
+  font-family: "Lato";
+}
+
+.searchChat {
+  padding: 15px;
+
+  // width: 100%;
+  input {
+    width: 100%;
+    border: none;
+  }
+}
+
+.chat-channels {
+  height: 90%;
+  overflow-y: auto;
+}

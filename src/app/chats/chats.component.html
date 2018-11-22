@@ -1,0 +1,45 @@
+<td-layout>
+  <td-navigation-drawer flex [sidenavTitle]="name" name="Firstname Lastname" email="firstname.lastname@company.com">
+    <mat-nav-list>
+      <a *ngFor="let item of routes" mat-list-item>
+        <mat-icon>{{item.icon}}</mat-icon>{{item.title}}
+      </a>
+    </mat-nav-list>
+    <div td-navigation-drawer-menu>
+      <mat-nav-list>
+        <a *ngFor="let item of usermenu" mat-list-item>
+          <mat-icon>{{item.icon}}</mat-icon>{{item.title}}
+        </a>
+      </mat-nav-list>
+    </div>
+  </td-navigation-drawer>
+  <td-layout-nav-list [toolbarTitle]="name" [opened]="true" [mode]="(media.registerQuery('gt-xs') | async) ? 'side' : 'over'"
+    [sidenavWidth]="(media.registerQuery('gt-md') | async) ? '350px' : '100%'">
+    <button mat-icon-button td-menu-button tdLayoutToggle>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div *ngIf="user" td-toolbar-content app-top-bar [user]="user" layout="row" layout-align="start center" flex></div>
+    <div td-sidenav-content class="searchChat">
+      <input type="text" #searchChat placeholder="Tap Here To Search Chats">
+    </div>
+    <a td-sidenav-content mat-fab color="accent" (click)="newChat()" [class.mat-fab-bottom-right]="!media.query('gt-md')"
+      [class.mat-fab-top-right]="media.query('gt-md')" class="z-3 fixed fab-pad">
+      <mat-icon>add</mat-icon>
+    </a>
+    <mat-divider td-sidenav-content></mat-divider>
+    <mat-nav-list td-sidenav-content [tdLayoutNavListClose]="!media.query('gt-sm')" class="chat-channels">
+      <ng-template let-item let-i="index" let-last="last" ngFor [ngForOf]="[0,1,2,3,4,5,6,7,8,9]">
+        <a mat-list-item (click)="onChatChannelClicked()">
+          <img matListAvatar src="https://api.adorable.io/avatars/285/{{i}}@adorable.io.png" />
+          <h3 matLine> Firstname Lastname </h3>
+          <p matLine> Email description goes here </p>
+          <mat-icon class="tc-amber-800">fiber_new</mat-icon>
+        </a>
+        <mat-divider *ngIf="!last" mat-inset></mat-divider>
+      </ng-template>
+    </mat-nav-list>
+    <div tdMediaToggle="gt-xs" style="margin:0!important;height:100%;" [mediaClasses]="['push-sm']">
+      <app-message-body [channel]="channel"></app-message-body>
+    </div>
+  </td-layout-nav-list>
+</td-layout>

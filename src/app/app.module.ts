@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 
 import {
   MatButtonModule, MatListModule, MatIconModule, MatCardModule, MatMenuModule, MatInputModule, MatButtonToggleModule,
@@ -28,18 +30,21 @@ import {
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { MessageBodyComponent } from './message-body/message-body.component';
 import { NewChatDialogComponent } from './new-chat-dialog/new-chat-dialog.component';
+import { ChatsComponent } from './chats/chats.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     MessageBodyComponent,
-    NewChatDialogComponent
+    NewChatDialogComponent,
+    ChatsComponent
   ],
   entryComponents: [
     NewChatDialogComponent
   ],
   imports: [
+
     FlexLayoutModule,
     BrowserModule,
     CommonModule,
