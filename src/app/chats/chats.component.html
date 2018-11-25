@@ -4,6 +4,9 @@
       <a *ngFor="let item of routes" mat-list-item>
         <mat-icon>{{item.icon}}</mat-icon>{{item.title}}
       </a>
+      <a mat-list-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>Logout
+      </a>
     </mat-nav-list>
     <div td-navigation-drawer-menu>
       <mat-nav-list>

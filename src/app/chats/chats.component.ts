@@ -4,6 +4,8 @@ import { MatIconRegistry, MatDialog } from '@angular/material';
 import { TdMediaService } from '@covalent/core';
 import { User } from '../user';
 import { NewChatDialogComponent } from '../new-chat-dialog/new-chat-dialog.component';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-chats',
@@ -35,17 +37,15 @@ export class ChatsComponent implements OnInit {
       title: 'Sent',
       route: '/',
       icon: 'send',
-    }, {
-      title: 'Trash',
-      route: '/',
-      icon: 'delete',
-    },
+    }
   ];
 
   constructor(public media: TdMediaService,
     private _iconRegistry: MatIconRegistry,
     private _domSanitizer: DomSanitizer,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    public authService: AuthService,
+    private router: Router) {
 
     this._iconRegistry.addSvgIconInNamespace('assets', 'teradata-ux',
       this._domSanitizer.bypassSecurityTrustResourceUrl('https://raw.githubusercontent.com/Teradata/covalent-quickstart/develop/src/assets/icons/teradata-ux.svg'));
@@ -54,6 +54,9 @@ export class ChatsComponent implements OnInit {
     this._iconRegistry.addSvgIconInNamespace('assets', 'covalent-mark',
       this._domSanitizer.bypassSecurityTrustResourceUrl('https://raw.githubusercontent.com/Teradata/covalent-quickstart/develop/src/assets/icons/covalent-mark.svg'));
 
+    if(this.authService.isGuest()){
+      this.router.navigate(['/login']);
+    }
   }
 
   ngOnInit(){
@@ -80,6 +83,10 @@ export class ChatsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+
+  logout(){
+    this.authService.logoutThenRedirect(['/login']);
   }
 
 }

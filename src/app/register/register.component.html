@@ -1,0 +1,25 @@
+<div class="flex-center">
+  <mat-card class="form-auth">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="auth-form" (ngSubmit)="register()" #registerForm="ngForm">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="Email" autofocus="true" name="email" [(ngModel)]="auth.email"
+            required>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" [(ngModel)]="auth.password" type="password" name="password" required>
+        </mat-form-field>
+      </form>
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    </mat-card-content>
+    <mat-card-actions class="auth-form-action">
+      <button mat-raised-button (click)="register()" color="primary">Register</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

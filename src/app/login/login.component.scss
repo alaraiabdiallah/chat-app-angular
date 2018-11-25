@@ -1,0 +1,31 @@
+.flex-center{
+    padding: 0;
+    margin: 50px 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-form {
+  width: 400px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+
+.auth-btn{
+    width: 100%;
+    margin: 0;
+}
+
+.auth-form-action{
+    text-align:center;
+    button{
+        display:block;
+        margin: 5px 0;
+        width: 100%;
+    }
+}

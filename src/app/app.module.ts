@@ -13,24 +13,25 @@ import { AppComponent } from './app.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
 import {
   MatButtonModule, MatListModule, MatIconModule, MatCardModule, MatMenuModule, MatInputModule, MatButtonToggleModule,
   MatProgressSpinnerModule, MatSelectModule, MatSlideToggleModule, MatDialogModule, MatSnackBarModule, MatToolbarModule,
-  MatTabsModule, MatSidenavModule, MatTooltipModule, MatRippleModule, MatRadioModule, MatGridListModule,
-  MatDatepickerModule, MatNativeDateModule, MatSliderModule, MatAutocompleteModule
+  MatTabsModule, MatSidenavModule, MatTooltipModule, MatRippleModule, MatRadioModule
 } from '@angular/material';
 
 import {
-  CovalentCommonModule, CovalentLayoutModule, CovalentMediaModule, CovalentExpansionPanelModule,
-  CovalentStepsModule, CovalentLoadingModule, CovalentDialogsModule, CovalentSearchModule, CovalentPagingModule,
-  CovalentNotificationsModule, CovalentMenuModule, CovalentDataTableModule, CovalentMessageModule
+  CovalentCommonModule, CovalentLayoutModule, CovalentMediaModule
 } from '@covalent/core';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { MessageBodyComponent } from './message-body/message-body.component';
 import { NewChatDialogComponent } from './new-chat-dialog/new-chat-dialog.component';
 import { ChatsComponent } from './chats/chats.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -38,20 +39,24 @@ import { ChatsComponent } from './chats/chats.component';
     TopBarComponent,
     MessageBodyComponent,
     NewChatDialogComponent,
-    ChatsComponent
+    ChatsComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   entryComponents: [
     NewChatDialogComponent
   ],
   imports: [
-
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     FlexLayoutModule,
+    FormsModule,
     BrowserModule,
     CommonModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule,
     HttpModule,
     JsonpModule,
     /** Material Modules */
@@ -68,30 +73,13 @@ import { ChatsComponent } from './chats/chats.component';
     MatDialogModule,
     MatSnackBarModule,
     MatToolbarModule,
-    MatTabsModule,
     MatSidenavModule,
     MatTooltipModule,
     MatRippleModule,
-    MatRadioModule,
-    MatGridListModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSliderModule,
-    MatAutocompleteModule,
     /** Covalent Modules */
     CovalentCommonModule,
     CovalentLayoutModule,
     CovalentMediaModule,
-    CovalentExpansionPanelModule,
-    CovalentStepsModule,
-    CovalentDialogsModule,
-    CovalentLoadingModule,
-    CovalentSearchModule,
-    CovalentPagingModule,
-    CovalentNotificationsModule,
-    CovalentMenuModule,
-    CovalentDataTableModule,
-    CovalentMessageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
